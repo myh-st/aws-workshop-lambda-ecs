@@ -1,0 +1,119 @@
+Here are the step-by-step instructions to package libraries with Lambda Layers and use them in a Python-based AWS Lambda function:
+
+## 1\. Create a virtual environment for your project
+
+Create a new folder on your computer and navigate into it using the command line interface. Then, create a new virtual environment by running the following command:
+
+```
+python3 -m venv myenv
+```
+
+Activate this environment by running:
+
+```
+source myenv/bin/activate
+```
+
+This will ensure that any packages you install from now on will be isolated to this specific project.
+
+## 2\. Install pandas library
+
+Install any necessary libraries or packages you want to include in your Lambda layer. For example, let's install the popular `pandas` library by running:
+
+```
+pip install pandas
+```
+
+You may add additional packages if needed.
+
+## 3\. Create a folder for your Lambda layer
+
+Create a new folder called "python" within your project directory. This folder should contain a subfolder called "lib", which is where our installed libraries will be placed.
+
+```
+mkdir -p python/lib/python3.8/site-packages/
+```
+
+## 4\. Copy installed packages into the folder
+
+Copy all the installed packages from your virtual environment to the newly created folder for the Lambda Layer by running the below shell command
+
+```
+cp -r ./myenv/lib/python3.8/site-packages/* ./python/lib/python3.8/site-packages/
+sudo chown -R $USER:$USER .
+```
+
+## 5\. Package the folder into a ZIP file
+
+Go ahead and zip up the folder like so:
+
+```
+zip -r pandas_layer.zip python
+```
+
+This command will create a compressed archive called `pandas_layer.zip`.
+
+## 6\. Create a layer in AWS Lambda
+
+Now go to your AWS console and create a new layer from this .zip archive.
+
+- Go to the [AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions)
+- Click on **Layers**
+- Click on **Create Layer**
+- Enter a name (e.g., PandasLayer) and an optional description.
+- Upload the zip file you created earlier
+- Specify a compatible runtime (e.g., Python 3.8)
+- Click on **Create**
+
+## 7\. Attach the layer to your Lambda function
+
+Now that your new Lambda layer is ready, you need to attach it to a Lambda function. Here's how to do it:
+
+- Go to the [AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions)
+- Select the function you want to add the layer to, or create a new one.
+- Scroll down to the **Lambda layers** section, then click on **Add a layer**
+- Choose **Custom layers**, then select the layer you just created from the list.
+- Save your changes.
+
+From now on, your Lambda function has access to whichever packages your layer contains.
+
+## 8\. Use the libraries in your Python code
+
+You can add a Lambda Layer from an S3 bucket by following the below steps:
+
+1.  Create an S3 bucket if you don't have one already and upload the layer zip file to that bucket.
+2.  Copy the S3 object URL of the layer zip file. (This can be found in the "Properties" tab of your uploaded layer zip file.)
+3.  Open the AWS Console and navigate to your Lambda function.
+4.  Scroll down to the "Layers" section and click on "Add a layer".
+5.  Choose "Provide a layer version ARN", input a name for the layer, paste the S3 object URL into the "S3 link URL" field, and choose a compatible runtime (e.g. Python 3.8).
+6.  Click "Create".
+7.  Once the layer has been created, it will show up under "Layers" in your Lambda function console.
+
+Sample code to use the pandas_layer.zip with a Lambda function:
+
+```python
+import json
+import pandas as pd
+
+def lambda_handler(event, context):
+    # Load data into a Pandas DataFrame
+    data = [
+        {"Name": "John", "Age": 28},
+        {"Name": "Jane", "Age": 32},
+        {"Name": "Bob", "Age": 45}
+    ]
+    df = pd.DataFrame(data)
+
+    # Perform some analysis on the data
+    avg_age = df["Age"].mean()
+
+    # Return the results as JSON
+    return {
+        'statusCode': 200,
+        'body': json.dumps({
+            'average_age': avg_age
+        })
+    }
+```
+
+Noted : ควรใช้วิธี venv ให้ runtime version ตรงกันกับที่ใช้บน lambda เพื่อความ compatible
