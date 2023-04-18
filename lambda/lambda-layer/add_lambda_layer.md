@@ -94,6 +94,7 @@ From now on, your Lambda function has access to whichever packages your layer co
 
 Sample code to use the pandas_layer.zip with a Lambda function:
 - Copy code below and paste it to lambda_function box
+
 ![image](https://user-images.githubusercontent.com/37788058/232673782-77d606a8-3fad-4d12-b863-6b18ffa337c7.png)
 - Click on Test
 - Enter a Event name
