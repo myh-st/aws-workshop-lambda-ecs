@@ -58,8 +58,13 @@ This command will create a compressed archive called `pandas_layer.zip`.
 Now go to your AWS console and create a new layer from this .zip archive.
 
 - Go to the [AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions)
+<img width="1170" alt="image" src="https://user-images.githubusercontent.com/37788058/232672613-f32127d2-cee3-4079-8075-7f9e9ef49507.png">
+
 - Click on **Layers**
 - Click on **Create Layer**
+
+![image](https://user-images.githubusercontent.com/37788058/232672718-e31aabe0-4720-4eb9-ad60-307b4ab2ac6e.png)
+
 - Enter a name (e.g., PandasLayer) and an optional description.
 - Upload the zip file you created earlier
 - Specify a compatible runtime (e.g., Python 3.8)
@@ -69,27 +74,32 @@ Now go to your AWS console and create a new layer from this .zip archive.
 
 Now that your new Lambda layer is ready, you need to attach it to a Lambda function. Here's how to do it:
 
+<img width="1124" alt="image" src="https://user-images.githubusercontent.com/37788058/232672985-e74ff662-9350-4536-ab3e-4b563ee848ab.png">
+
+![image](https://user-images.githubusercontent.com/37788058/232673160-d8a11f13-9793-432b-aa28-c95a790d7cee.png)
+
 - Go to the [AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions)
 - Select the function you want to add the layer to, or create a new one.
 - Scroll down to the **Lambda layers** section, then click on **Add a layer**
+
+<img width="1117" alt="image" src="https://user-images.githubusercontent.com/37788058/232673187-d31f0af9-5319-4502-9e7e-8063d882ced3.png">
+
 - Choose **Custom layers**, then select the layer you just created from the list.
+
+![image](https://user-images.githubusercontent.com/37788058/232673288-00c51df8-605b-409f-a268-e16fdb481b74.png)
+
 - Save your changes.
 
 From now on, your Lambda function has access to whichever packages your layer contains.
 
-## 8\. Use the libraries in your Python code
-
-You can add a Lambda Layer from an S3 bucket by following the below steps:
-
-1.  Create an S3 bucket if you don't have one already and upload the layer zip file to that bucket.
-2.  Copy the S3 object URL of the layer zip file. (This can be found in the "Properties" tab of your uploaded layer zip file.)
-3.  Open the AWS Console and navigate to your Lambda function.
-4.  Scroll down to the "Layers" section and click on "Add a layer".
-5.  Choose "Provide a layer version ARN", input a name for the layer, paste the S3 object URL into the "S3 link URL" field, and choose a compatible runtime (e.g. Python 3.8).
-6.  Click "Create".
-7.  Once the layer has been created, it will show up under "Layers" in your Lambda function console.
-
 Sample code to use the pandas_layer.zip with a Lambda function:
+- Copy code below and paste it to lambda_function box
+![image](https://user-images.githubusercontent.com/37788058/232673782-77d606a8-3fad-4d12-b863-6b18ffa337c7.png)
+- Click on Test
+- Enter a Event name
+- Click on Save
+<img width="760" alt="image" src="https://user-images.githubusercontent.com/37788058/232674045-463d8fa4-5fab-484f-ac32-0f46cc4905dc.png">
+
 
 ```python
 import json
@@ -116,4 +126,16 @@ def lambda_handler(event, context):
     }
 ```
 
-Noted : ควรใช้วิธี venv ให้ runtime version ตรงกันกับที่ใช้บน lambda เพื่อความ compatible
+## (Optional) Add a Lambda Layer from an S3 bucket
+
+You can add a Lambda Layer from an S3 bucket by following the below steps:
+
+1.  Create an S3 bucket if you don't have one already and upload the layer zip file to that bucket.
+2.  Copy the S3 object URL of the layer zip file. (This can be found in the "Properties" tab of your uploaded layer zip file.)
+3.  Open the AWS Console and navigate to your Lambda function.
+4.  Scroll down to the "Layers" section and click on "Add a layer".
+5.  Choose "Provide a layer version ARN", input a name for the layer, paste the S3 object URL into the "S3 link URL" field, and choose a compatible runtime (e.g. Python 3.8).
+6.  Click "Create".
+7.  Once the layer has been created, it will show up under "Layers" in your Lambda function console.
+
+Noted : ควรใช้วิธี python venv ให้ runtime version ตรงกันกับที่ใช้บน Lambda Function เพื่อความ compatible
