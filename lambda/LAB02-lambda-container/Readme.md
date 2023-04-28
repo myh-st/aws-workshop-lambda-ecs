@@ -1,10 +1,28 @@
 ## Packaging Lambda Code in a Container Image
 
+## Before starting this workshop
 Prerequisites:
 
-    Docker Installed
-    AWS CLI Installed
+    AWS Account
+    Cloud 9
+        - Docker Installed
+        - AWS CLI Installed
 
+## Login to AWS console
+
+<img width="1117" alt="image" src="https://user-images.githubusercontent.com/37788058/235129149-d5fdbaa1-4f3a-48df-9098-604c35fe38bf.png">
+
+- Search : cloud9
+
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/37788058/235129306-a124cfa2-b0b0-4a88-a1e0-4c1b12ab6fd1.png">
+
+- Click on Open to open Cloud9 IDE ( Please choose the right Owner ARN to your AWS Accout username )
+
+![image](https://user-images.githubusercontent.com/37788058/235130532-8a9a04ed-429d-4e31-b812-33d4597e3a15.png)
+
+![image](https://user-images.githubusercontent.com/37788058/235131081-790f8645-668e-4bf0-8d55-2e0e0676dac8.png)
+
+## Let’s Get Started
 1.Create a folder and file, file called lambda_function.py. 
 - Right click -> New folder (Name the folder as you want) 
 - Right click New file on your folder (Name the file lambda_function.py)
@@ -32,7 +50,7 @@ In the lambda_function.py file, add the following code:
 
     COPY lambda_function.py ${LAMBDA_TASK_ROOT}
 
-    CMD ["lambda_function.handler"]
+    CMD ["lambda_function.lambda_handler"]
 
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/37788058/235102855-716c5394-ee2d-4c88-b6ae-1f79ae277fbe.png">
 
