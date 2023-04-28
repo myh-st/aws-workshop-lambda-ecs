@@ -66,7 +66,7 @@ Use the AWS CLI:
 - Select visibility setttings -> Private
 - Name the repository name ex : lambda-container
 
-<img width="650" alt="image" src="https://user-images.githubusercontent.com/37788058/235104234-f41b1ae1-0775-46c4-aac3-e9a8694e5b98.png">
+![image](https://user-images.githubusercontent.com/37788058/235134325-b52d555d-1d70-4fb5-bd9c-186aaf19441b.png)
 
 - Click to Enable image scan
 
