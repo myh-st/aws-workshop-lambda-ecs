@@ -99,5 +99,48 @@ docker images
 - Click on Refresh. The containers you push will appear on this page.
 
 <img width="732" alt="image" src="https://user-images.githubusercontent.com/37788058/235109555-4477a6af-1b16-4066-9955-ff5cc6f9c29a.png">
+
+10.Goto Lambda
+
+<img width="693" alt="image" src="https://user-images.githubusercontent.com/37788058/235110051-fcd463da-f4d3-49ae-93bf-d995fb3ac91d.png">
+
+- Click on Create Function
+
+<img width="714" alt="image" src="https://user-images.githubusercontent.com/37788058/235110241-b853329c-cdc4-498f-9a13-563d079993b5.png">
+
+- Select Container image
+    
+<img width="843" alt="image" src="https://user-images.githubusercontent.com/37788058/235110930-c9672dc0-baa1-4623-b945-26f5841b221f.png">
+
+- Enter a Function name
+- Click Browse images
+
+![image](https://user-images.githubusercontent.com/37788058/235111666-b4b2dae7-c783-49c5-af6f-90bc08bead28.png)
+
+- Select the repository
+- Select image tag
+- Click on Select image
+
+![image](https://user-images.githubusercontent.com/37788058/235111486-8f227d1a-958b-41c6-a329-f080ec200d05.png)
+
+![image](https://user-images.githubusercontent.com/37788058/235112194-8c1e7264-f65d-4e3a-9265-a63ec9f4bac9.png)
+
+- Click on Create function
+    
+![image](https://user-images.githubusercontent.com/37788058/235112600-640028ca-6a14-4aef-90f7-0a2dba9d3767.png)
+
+<img width="876" alt="image" src="https://user-images.githubusercontent.com/37788058/235112733-39773b03-7087-4ce2-863b-9ab00c75981a.png">
+
+<img width="873" alt="image" src="https://user-images.githubusercontent.com/37788058/235112793-ea5bbb18-ee9b-4b3b-b0f7-41e2259872bc.png">
+
+- Scoll down, Click on Test menu
+    
+<img width="866" alt="image" src="https://user-images.githubusercontent.com/37788058/235112942-58355d20-b3cc-4d72-bf7a-28584cd83fb2.png">
+
+- Enter a Event Name 
+- Click on Save
+- Click on Test
+
+
     
 Noted: Enabling Provisioned Concurrency option can improve the overall performance by having up-to-date container images.
