@@ -60,11 +60,17 @@ Use the AWS CLI:
 
 ![image](https://user-images.githubusercontent.com/37788058/235105381-48fee29a-3c05-439c-ba46-44991c50bbd3.png)
 
-- Use the following steps to authenticate and push an image to your repository. For additional registry authentication methods
+- Use the following steps to authenticate and push an image to your repository. For additional registry authentication methods (copy and paste in cloud9 console 4  steps
 
 ![image](https://user-images.githubusercontent.com/37788058/235105832-f1dd2f0b-7021-47db-8db0-c3a1772d6fad.png)
 
+5.Goto Cloud9 console run command line below, Make sure replace cd (YOUR FOLDER NAME) and replace <AWSaccountID> to your AWS account id
+
+    ls
+    cd lambda-lab03 #Your folder name
     aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com
+
+<img width="1024" alt="image" src="https://user-images.githubusercontent.com/37788058/235107625-e4aee9cd-9d4d-4201-a754-8ea416f8e0bd.png">
 
 Note: if you receive an error using the AWS CLI, make sure that you have the latest version of the AWS CLI and Docker installed.
 
@@ -84,4 +90,14 @@ docker images
 
     docker push <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com/demo-lambda:latest
 
+![image](https://user-images.githubusercontent.com/37788058/235109147-aa4f67af-272a-442f-8709-6ae08c3d0128.png)
+
+9.Goto ECS console
+
+<img width="738" alt="image" src="https://user-images.githubusercontent.com/37788058/235109420-01c2349f-d17a-4287-af77-c6bc8f53fc44.png">
+
+- Click on Refresh. The containers you push will appear on this page.
+
+<img width="732" alt="image" src="https://user-images.githubusercontent.com/37788058/235109555-4477a6af-1b16-4066-9955-ff5cc6f9c29a.png">
+    
 Noted: Enabling Provisioned Concurrency option can improve the overall performance by having up-to-date container images.
