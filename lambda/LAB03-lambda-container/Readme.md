@@ -32,7 +32,7 @@ In the lambda_function.py file, add the following code:
 
     COPY lambda_function.py ${LAMBDA_TASK_ROOT}
 
-    CMD ["lambda_function.lambda_handler"]
+    CMD ["lambda_function.handler"]
 
 <img width="600" alt="image" src="https://user-images.githubusercontent.com/37788058/235102855-716c5394-ee2d-4c88-b6ae-1f79ae277fbe.png">
 
@@ -77,18 +77,18 @@ Note: if you receive an error using the AWS CLI, make sure that you have the lat
 5.Build your Docker image using the following command. For information on building a Docker file from scratch,
 see the instructions here . You can skip this step if your image has already been built:
 
-    docker build -t demo-lambda .
+    docker build -t lambda-container .
 
 6.After the build is completed, Check docker images
 docker images
 
 7.tag your image so you can push the image to this repository:
 
-    docker tag demo-lambda:latest <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com/demo-lambda:latest
+    docker tag lambda-container:latest <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com/lambda-container:latest
 
 8.Run the following command to push this image to your newly created AWS repository:
 
-    docker push <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com/demo-lambda:latest
+    docker push <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com/lambda-container:latest
 
 ![image](https://user-images.githubusercontent.com/37788058/235109147-aa4f67af-272a-442f-8709-6ae08c3d0128.png)
 
@@ -141,6 +141,7 @@ docker images
 - Click on Save
 - Click on Test
 
+<img width="841" alt="image" src="https://user-images.githubusercontent.com/37788058/235114771-5da31500-9b7c-4a88-b08e-c0ca19b0dc15.png">
 
     
 Noted: Enabling Provisioned Concurrency option can improve the overall performance by having up-to-date container images.
