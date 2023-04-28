@@ -5,7 +5,7 @@ Here are the step-by-step instructions to package libraries with Lambda Layers a
 Create a new folder on your computer and navigate into it using the command line interface. Then, create a new virtual environment by running the following command:
 
 ```
-python3 -m venv myenv
+python -m venv myenv
 ```
 
 Activate this environment by running:
@@ -31,7 +31,7 @@ You may add additional packages if needed.
 Create a new folder called "python" within your project directory. This folder should contain a subfolder called "lib", which is where our installed libraries will be placed.
 
 ```
-mkdir -p python/lib/python3.8/site-packages/
+mkdir -p python/lib/python3.7/site-packages/
 ```
 
 ## 4\. Copy installed packages into the folder
@@ -39,7 +39,7 @@ mkdir -p python/lib/python3.8/site-packages/
 Copy all the installed packages from your virtual environment to the newly created folder for the Lambda Layer by running the below shell command
 
 ```
-cp -r ./myenv/lib/python3.8/site-packages/* ./python/lib/python3.8/site-packages/
+cp -r ./myenv/lib/python3.7/site-packages/* ./python/lib/python3.7/site-packages/
 sudo chown -R $USER:$USER .
 ```
 
@@ -53,12 +53,14 @@ zip -r pandas_layer.zip python
 
 This command will create a compressed archive called `pandas_layer.zip`.
 
+Right click to Download 'pandas_later.zip' file
+
 ## 6\. Create a layer in AWS Lambda
 
 Now go to your AWS console and create a new layer from this .zip archive.
 
 - Go to the [AWS Lambda Console](https://console.aws.amazon.com/lambda/home?region=ap-southeast-1#/functions)
-<img width="1170" alt="image" src="https://user-images.githubusercontent.com/37788058/232672613-f32127d2-cee3-4079-8075-7f9e9ef49507.png">
+  <img width="1170" alt="image" src="https://user-images.githubusercontent.com/37788058/232672613-f32127d2-cee3-4079-8075-7f9e9ef49507.png">
 
 - Click on **Layers**
 - Click on **Create Layer**
@@ -67,7 +69,7 @@ Now go to your AWS console and create a new layer from this .zip archive.
 
 - Enter a name (e.g., PandasLayer) and an optional description.
 - Upload the zip file you created earlier
-- Specify a compatible runtime (e.g., Python 3.8)
+- Specify a compatible runtime (e.g., Python 3.7)
 - Click on **Create**
 
 ## 7\. Attach the layer to your Lambda function
@@ -93,14 +95,8 @@ Now that your new Lambda layer is ready, you need to attach it to a Lambda funct
 From now on, your Lambda function has access to whichever packages your layer contains.
 
 Sample code to use the pandas_layer.zip with a Lambda function:
+
 - Copy code below and paste it to lambda_function box
-
-![image](https://user-images.githubusercontent.com/37788058/232673782-77d606a8-3fad-4d12-b863-6b18ffa337c7.png)
-- Click on Test
-- Enter a Event name
-- Click on Save
-<img width="760" alt="image" src="https://user-images.githubusercontent.com/37788058/232674045-463d8fa4-5fab-484f-ac32-0f46cc4905dc.png">
-
 
 ```python
 import json
@@ -127,6 +123,13 @@ def lambda_handler(event, context):
     }
 ```
 
+![image](https://user-images.githubusercontent.com/37788058/232673782-77d606a8-3fad-4d12-b863-6b18ffa337c7.png)
+
+- Click on Test
+- Enter a Event name
+- Click on Save
+  <img width="760" alt="image" src="https://user-images.githubusercontent.com/37788058/232674045-463d8fa4-5fab-484f-ac32-0f46cc4905dc.png">
+
 ## (Optional) Add a Lambda Layer from an S3 bucket
 
 You can add a Lambda Layer from an S3 bucket by following the below steps:
@@ -135,7 +138,7 @@ You can add a Lambda Layer from an S3 bucket by following the below steps:
 2.  Copy the S3 object URL of the layer zip file. (This can be found in the "Properties" tab of your uploaded layer zip file.)
 3.  Open the AWS Console and navigate to your Lambda function.
 4.  Scroll down to the "Layers" section and click on "Add a layer".
-5.  Choose "Provide a layer version ARN", input a name for the layer, paste the S3 object URL into the "S3 link URL" field, and choose a compatible runtime (e.g. Python 3.8).
+5.  Choose "Provide a layer version ARN", input a name for the layer, paste the S3 object URL into the "S3 link URL" field, and choose a compatible runtime (e.g. Python 3.7).
 6.  Click "Create".
 7.  Once the layer has been created, it will show up under "Layers" in your Lambda function console.
 
