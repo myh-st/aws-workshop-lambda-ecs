@@ -55,6 +55,8 @@ This command will create a compressed archive called `pandas_layer.zip`.
 
 Right click to Download 'pandas_later.zip' file
 
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/37788058/235095891-7dec51f6-27f9-4a56-8c3f-78051d868939.png">
+
 ## 6\. Create a layer in AWS Lambda
 
 Now go to your AWS console and create a new layer from this .zip archive.
