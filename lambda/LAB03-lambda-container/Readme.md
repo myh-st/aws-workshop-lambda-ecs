@@ -34,8 +34,35 @@ In the lambda_function.py file, add the following code:
 
     CMD ["lambda_function.lambda_handler"]
 
-4.Retrieve an authentication token and authenticate your Docker client to your registry.
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/37788058/235102855-716c5394-ee2d-4c88-b6ae-1f79ae277fbe.png">
+
+4.Goto AWS Elastic Container Registry (ECR) service,Retrieve an authentication token and authenticate your Docker client to your registry.
 Use the AWS CLI:
+
+<img width="560" alt="image" src="https://user-images.githubusercontent.com/37788058/235103247-d45942fd-0d3c-4c54-947e-ff3097cc7128.png">
+
+- Click Create Repository
+
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/37788058/235103730-95966ea2-d61c-431c-95c3-5b1f0bcfac99.png">
+
+- Select visibility setttings -> Private
+- Name the repository name ex : lambda-container
+
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/37788058/235104234-f41b1ae1-0775-46c4-aac3-e9a8694e5b98.png">
+
+- Click to Enable image scan
+
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/37788058/235104775-bcc2d882-e37e-49c7-8397-4f948e43d788.png">
+
+<img width="600" alt="image" src="https://user-images.githubusercontent.com/37788058/235104634-269e15d4-a9f5-4297-a2f9-35a1682476a5.png">
+
+- Click View push commands or Click lambda-container (your private repository name)
+
+![image](https://user-images.githubusercontent.com/37788058/235105381-48fee29a-3c05-439c-ba46-44991c50bbd3.png)
+
+- Use the following steps to authenticate and push an image to your repository. For additional registry authentication methods
+
+![image](https://user-images.githubusercontent.com/37788058/235105832-f1dd2f0b-7021-47db-8db0-c3a1772d6fad.png)
 
     aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin <AWSaccountID>.dkr.ecr.ap-southeast-1.amazonaws.com
 
