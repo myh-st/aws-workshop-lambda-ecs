@@ -132,6 +132,11 @@ def lambda_handler(event, context):
 - Click on Save
   <img width="760" alt="image" src="https://user-images.githubusercontent.com/37788058/232674045-463d8fa4-5fab-484f-ac32-0f46cc4905dc.png">
 
+- Click on Test
+
+<img width="878" alt="image" src="https://user-images.githubusercontent.com/37788058/235098211-e917a922-3baf-4fae-b1ea-9aed9033ab6e.png">
+
+
 ## (Optional) Add a Lambda Layer from an S3 bucket
 
 You can add a Lambda Layer from an S3 bucket by following the below steps:
