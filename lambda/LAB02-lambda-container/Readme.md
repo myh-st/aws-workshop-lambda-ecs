@@ -142,6 +142,5 @@ docker images
 - Click on Test
 
 <img width="841" alt="image" src="https://user-images.githubusercontent.com/37788058/235114771-5da31500-9b7c-4a88-b08e-c0ca19b0dc15.png">
-
     
-Noted: Enabling Provisioned Concurrency option can improve the overall performance by having up-to-date container images.
+Congrats! Now you deployed Lambda Function using container image.
