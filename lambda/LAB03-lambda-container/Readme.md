@@ -5,7 +5,14 @@ Prerequisites:
     Docker Installed
     AWS CLI Installed
 
-1.Create a file called lambda_function.py.
+1.Create a folder and file, file called lambda_function.py. 
+- Right click -> New folder (Name the folder as you want) 
+- Right click New file on your folder (Name the file lambda_function.py)
+
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/37788058/235100697-880c10f7-4adc-4609-901f-91c263b9e725.png">
+
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/37788058/235101707-d48b00d9-3159-4cea-8a2a-b906e5e91aab.png">
+
 In the lambda_function.py file, add the following code:
 
     import json
