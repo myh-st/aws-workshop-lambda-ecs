@@ -1,4 +1,28 @@
-Here are the step-by-step instructions to package libraries with Lambda Layers and use them in a Python-based AWS Lambda function:
+## Package libraries with Lambda Layers and use them in a Python-based AWS Lambda function:
+
+## Before starting this workshop
+Prerequisites:
+
+    AWS Account
+    Cloud 9
+        - Docker Installed
+        - AWS CLI Installed
+
+## Login to AWS console
+
+<img width="1117" alt="image" src="https://user-images.githubusercontent.com/37788058/235129149-d5fdbaa1-4f3a-48df-9098-604c35fe38bf.png">
+
+- Search : cloud9
+
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/37788058/235129306-a124cfa2-b0b0-4a88-a1e0-4c1b12ab6fd1.png">
+
+- Click on Open to open Cloud9 IDE ( Please choose the right Owner ARN to your AWS Accout username )
+
+![image](https://user-images.githubusercontent.com/37788058/235130532-8a9a04ed-429d-4e31-b812-33d4597e3a15.png)
+
+![image](https://user-images.githubusercontent.com/37788058/235131081-790f8645-668e-4bf0-8d55-2e0e0676dac8.png)
+
+## Let’s Get Started
 
 ## 1\. Create a virtual environment for your project
 
