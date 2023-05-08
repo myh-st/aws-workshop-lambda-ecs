@@ -24,6 +24,8 @@ Prerequisites:
 
 ## Let’s Get Started
 
+![image](https://user-images.githubusercontent.com/37788058/236745238-a1fa1d25-85f3-4197-b1a2-d589f3719b9c.png)
+
 ## 1\. Create a virtual environment for your project
 
 Create a new folder on your computer and navigate into it using the command line interface. Then, create a new virtual environment by running the following command:
