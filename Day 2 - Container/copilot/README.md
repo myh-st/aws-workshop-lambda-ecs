@@ -59,6 +59,53 @@ copilot init --app demo                 \
  --deploy
 ```
 
+## To delete all services created with AWS Copilot
+
+To delete all services created with AWS Copilot using the Copilot CLI, you can use the following steps:
+
+1. Open a terminal window and navigate to the directory containing your Copilot application.
+
+2. Run the command below to list all services (svc) in your application (app) list all your application.
+
+```sh
+copilot svc ls
+copilot app ls
+```
+
+3. Run the command below followed by the name of the service to delete each service.
+
+```sh
+copilot svc delete
+copilot app delete
+```
+
+For example:
+
+```sh
+copilot svc delete myservice
+copilot app delete myservice
+```
+
+4. Repeat step 3 for each service you want to delete.
+
+5. Once all services have been deleted, you can also delete the associated resources such as load balancers, target groups, and security groups by running the appropriate `copilot` commands.
+
+For example, to delete the load balancer associated with a service named "myservice", you can run the command
+
+```sh
+copilot svc status -n myservice
+```
+
+to get the load balancer name, then run the command
+
+```sh
+copilot app delete-lb -n myservice-lb
+```
+
+to delete it.
+
+Note that when you delete services using the Copilot CLI, the associated CloudFormation stack is also deleted, which includes the resources created for the service. Be sure to review the resources being deleted before confirming the deletion to avoid accidentally deleting resources you still need.
+
 This will create a VPC, Application Load Balancer, an Amazon ECS Service with the sample app running on AWS Fargate.
 This process will take around 8 minutes to complete - at which point you'll get a URL for your sample app running! 🚀
 
