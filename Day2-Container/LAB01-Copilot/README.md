@@ -96,6 +96,12 @@ Open your command prompt and run the command `aws configure`. When prompted, pas
 
 Make sure you have the AWS command line tool installed and have already run `aws configure` before you start.
 
+or
+
+    export AWS_ACCESS_KEY_ID=<<Access-Id>>
+    export AWS_SECRET_ACCESS_KEY=<<Secret-Key>>
+    export AWS_DEFAULT_REGION=ap-southeast-1
+    
 To get a sample app up and running in one command, run the following:
 
 ```sh
