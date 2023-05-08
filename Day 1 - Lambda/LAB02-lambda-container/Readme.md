@@ -23,6 +23,9 @@ Prerequisites:
 ![image](https://user-images.githubusercontent.com/37788058/235131081-790f8645-668e-4bf0-8d55-2e0e0676dac8.png)
 
 ## Let’s Get Started
+
+![image](https://user-images.githubusercontent.com/37788058/236744573-e013a26c-6d56-4be6-b1a6-37b07b3e7584.png)
+
 1.Create a folder and file, file called lambda_function.py. 
 - Right click -> New folder (Name the folder as you want) 
 - Right click New file on your folder (Name the file lambda_function.py)
