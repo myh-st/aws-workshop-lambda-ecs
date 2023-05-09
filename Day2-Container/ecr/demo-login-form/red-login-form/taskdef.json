@@ -1,0 +1,179 @@
+{
+  "ipcMode": null,
+  "executionRoleArn": "arn:aws:iam::687069305167:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "environmentFiles": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/nginx-red-login-fargate",
+          "awslogs-region": "ap-southeast-2",
+          "awslogs-create-group": "true",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "entryPoint": null,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "command": null,
+      "linuxParameters": null,
+      "cpu": 512,
+      "environment": [],
+      "resourceRequirements": null,
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [],
+      "workingDirectory": null,
+      "secrets": null,
+      "dockerSecurityOptions": null,
+      "memory": 512,
+      "memoryReservation": null,
+      "volumesFrom": [],
+      "stopTimeout": null,
+      "image": "687069305167.dkr.ecr.ap-southeast-2.amazonaws.com/demo-ecs-bg:latest",
+      "startTimeout": null,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "systemControls": null,
+      "privileged": null,
+      "name": "demo-ecs-bg"
+    },
+    {
+      "dnsSearchDomains": null,
+      "environmentFiles": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "secretOptions": null,
+        "options": {
+          "awslogs-group": "/ecs/ecs-aws-otel-sidecar-collector",
+          "awslogs-region": "ap-southeast-2",
+          "awslogs-create-group": "true",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "entryPoint": null,
+      "portMappings": [],
+      "command": ["--config=/etc/ecs/ecs-cloudwatch-xray.yaml"],
+      "linuxParameters": null,
+      "cpu": 0,
+      "environment": [],
+      "resourceRequirements": null,
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [],
+      "workingDirectory": null,
+      "secrets": null,
+      "dockerSecurityOptions": null,
+      "memory": null,
+      "memoryReservation": null,
+      "volumesFrom": [],
+      "stopTimeout": null,
+      "image": "public.ecr.aws/aws-observability/aws-otel-collector:v0.27.0",
+      "startTimeout": null,
+      "firelensConfiguration": null,
+      "dependsOn": null,
+      "disableNetworking": null,
+      "interactive": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "pseudoTerminal": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "systemControls": null,
+      "privileged": null,
+      "name": "aws-otel-collector"
+    }
+  ],
+  "placementConstraints": [],
+  "memory": "2048",
+  "taskRoleArn": null,
+  "compatibilities": ["EC2", "FARGATE"],
+  "taskDefinitionArn": "arn:aws:ecs:ap-southeast-2:687069305167:task-definition/nginx-red-login-fargate:2",
+  "family": "nginx-red-login-fargate",
+  "requiresAttributes": [
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "targetId": null,
+      "targetType": null,
+      "value": null,
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "pidMode": null,
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "runtimePlatform": {
+    "operatingSystemFamily": "LINUX",
+    "cpuArchitecture": "X86_64"
+  },
+  "cpu": "1024",
+  "revision": 2,
+  "status": "ACTIVE",
+  "inferenceAccelerators": null,
+  "proxyConfiguration": null,
+  "volumes": []
+}
