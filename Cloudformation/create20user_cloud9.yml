@@ -1,0 +1,46 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  CreateUserGroup:
+    Type: AWS::IAM::Group
+    Properties:
+      GroupName: app-group
+
+  UserPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: app-policy
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Action: "*"
+            Resource: "*"
+      Groups:
+        - !Ref CreateUserGroup
+
+  # สร้างผู้ใช้และ Cloud9 Environment โดยใช้ Loop
+  UserDataLoop:
+    Type: AWS::CloudFormation::Init
+    Properties:
+      Metadata:
+        AWS::CloudFormation::Init:
+          configSets:
+            setup:
+              - createUsersAndEnvironments
+          createUsersAndEnvironments:
+            commands:
+              !Sub |
+                # สร้างผู้ใช้และ Cloud9 Environment
+                {% for i in range(1, 21) %}
+                aws iam create-user --user-name app${i}
+                aws iam add-user-to-group --user-name app${i} --group-name !Ref CreateUserGroup
+                aws cloud9 create-environment-ec2 --name app${i}-environment --instance-type t2.micro --description "Cloud9 environment for app${i}" --automatic-stop-time-minutes 30 --connection-type SSM --subnet-id "vpc-05dfd4afd6eb46f13" --owner-arn "arn:aws:iam::${AWS::AccountId}:user/app${i}"
+                {% endfor %}
+
+  CreateUserAndEnvironment:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: "https://s3.amazonaws.com/cloudformation-templates-us-east-1/EC2InstanceWithSecurityGroupSample.template"
+      Parameters:
+        SubnetId: "vpc-05dfd4afd6eb46f13" # ใส่ subnet ID ของ default VPC
+      DependsOn: UserDataLoop
