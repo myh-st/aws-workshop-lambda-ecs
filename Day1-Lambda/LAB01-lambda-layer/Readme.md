@@ -56,6 +56,12 @@ You may add additional packages if needed.
 
 Create a new folder called "python" within your project directory. This folder should contain a subfolder called "lib", which is where our installed libraries will be placed.
 
+check python version
+
+```
+python --version
+```
+
 ```
 mkdir -p python/lib/python3.7/site-packages/
 ```
