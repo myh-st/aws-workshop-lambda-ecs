@@ -101,7 +101,11 @@ or
     export AWS_ACCESS_KEY_ID=<<Access-Id>>
     export AWS_SECRET_ACCESS_KEY=<<Secret-Key>>
     export AWS_DEFAULT_REGION=ap-southeast-1
-    
+
+Check IAM Credentials
+
+    aws sts get-caller-identity
+
 To get a sample app up and running in one command, run the following:
 
 ```sh
