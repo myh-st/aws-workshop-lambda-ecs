@@ -105,8 +105,8 @@ or
 To get a sample app up and running in one command, run the following:
 
 ```sh
-copilot init --app demo                 \
- --name web-login                       \
+copilot init --app <prefix>-demo                 \
+ --name <prefix>-web-login                       \
  --type 'Load Balanced Web Service'     \
  --dockerfile './Dockerfile'            \
  --deploy
@@ -137,9 +137,6 @@ To delete all services created with AWS Copilot using the Copilot CLI, you can u
 
 <img width="674" alt="image" src="https://user-images.githubusercontent.com/37788058/236748644-9937eb28-d8fe-4920-abf4-5a3b6914328f.png">
 
-## To delete all services created with AWS Copilot using the script
-
-    sh copilot_cleanup.sh
 
 Note that when you delete services using the Copilot CLI, the associated CloudFormation stack is also deleted, which includes the resources created for the service. Be sure to review the resources being deleted before confirming the deletion to avoid accidentally deleting resources you still need.
 
